@@ -1,0 +1,439 @@
+:root {
+  --blanco-claro: #fff;
+  --blanco-medio: #ddd;
+  --blanco-oscuro: #c7c7c7;
+  --negro: #191919;
+  --negro-medio: #494949;
+  --rojo: #ec1840;
+  --rojo-medio: #d41a3c;
+  --morado: #7a18ec;
+  --morado-medio: #6d18cf;
+  --amarillo: #ffbd39;
+  --amarillo-medio: #e7b144;
+  --naranja: #ff7c48;
+  --naranja-medio: #e06a3b;
+  --magenta: #db005b;
+  --magenta-medio: #c00251;
+  --verde: #48da48;
+  --verde-medio: #38b338;
+  --fondo-menu: #203955;
+  --fondo-menu-medio: #1b3049;
+  --fondo-menu-oscuro: #16273a;
+}
+html {
+  user-select: none;
+  font-size: 17px;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--blanco-claro);
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* estilos generales */
+.contenido {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  position: relative; /* permite posicionar las instrucciones y puntaje */
+}
+.opciones,
+.boton,
+.tarjeta,
+.final p,
+h2 {
+  text-align: center;
+}
+.menu,
+.opciones,
+.botones,
+.ayuda,
+.fondos,
+.instrucciones-juego,
+.niveles-dificultad,
+.contenedor-niveles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+@font-face {
+  font-family: titulo-juego;
+  src: url(../fonts/Mulan.ttf);
+}
+@font-face {
+  font-family: fuente-juego;
+  src: url(../fonts/karmasuture.otf);
+}
+@font-face {
+  font-family: general;
+  src: url(../fonts/RooneyPro-Medium.ttf);
+}
+/* video menu - audio fondo */
+.vid-bg {
+  position: fixed;
+  z-index: -1;
+}
+@media (min-aspect-ratio: 16/9) {
+  .vid-bg {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  .vid-bg {
+    width: auto;
+    height: 100%;
+  }
+}
+.aud-bg {
+  display: none;
+}
+/* nombre juego */
+.nombre-juego {
+  text-align: right;
+  font-size: 5rem;
+  font-family: titulo-juego, sans-serif;
+  text-shadow: 0 0 15px var(--negro);
+}
+.nombre-juego span {
+  font-size: 1.5em;
+}
+/* menu opciones */
+.menu,
+.opciones-menu,
+.opciones,
+.opcion,
+.contenido-opcion {
+  border-radius: 7px;
+}
+.opcion {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.opciones .opcion:first-child {
+  border-top-right-radius: 0;
+}
+.opciones .opcion:nth-child(2) {
+  border-top-left-radius: 0;
+}
+.menu {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  font-family: fuente-juego, sans-serif;
+  font-size: 1.3rem;
+  border-radius: 5px;
+}
+.opciones-menu {
+  margin-left: 200px;
+  width: 450px;
+  height: 400px;
+  background-color: var(--fondo-menu);
+}
+@media (max-width: 1200px) {
+  .menu {
+    flex-direction: column;
+  }
+  .opciones-menu {
+    margin-left: 0;
+  }
+}
+.opcion {
+  flex: 1;
+  display: inline-block;
+  width: 50%;
+  cursor: pointer;
+  padding: 7px 13px;
+}
+#inicio {
+  background-color: var(--fondo-menu);
+}
+#config {
+  background-color: var(--fondo-menu-oscuro);
+}
+/* contenido opciones */
+.contenido-opcion {
+  position: relative;
+  bottom: 1px;
+  width: 100%;
+  height: 85%;
+}
+#contenido-inicio {
+  display: block;
+}
+#contenido-fondo {
+  display: none;
+  text-align: center;
+}
+/* botones menu inicio */
+.botones {
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+.ayuda {
+  width: 100%;
+  height: 20%;
+}
+.boton {
+  color: var(--blanco-claro);
+  font-family: fuente-juego, sans-serif;
+  padding: 15px 25px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  outline: none;
+  background-color: var(--rojo);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px var(--blanco-oscuro);
+  transition: all 0.3s ease-in-out;
+}
+.dificultad {
+  background-color: var(--amarillo);
+}
+.instrucciones {
+  background-color: var(--morado);
+}
+.boton:hover {
+  box-shadow: 3px 3px var(--rojo-medio);
+  color: var(--rojo-medio);
+  background-color: var(--blanco-claro);
+}
+.dificultad:hover {
+  box-shadow: 3px 3px var(--amarillo-medio);
+  color: var(--amarillo-medio);
+}
+.instrucciones:hover {
+  box-shadow: 3px 3px var(--morado-medio);
+  color: var(--morado-medio);
+}
+.boton:active {
+  transform: translateY(5px);
+}
+/* fondos */
+.fondos {
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+}
+.fondo {
+  cursor: pointer;
+  display: block;
+  max-width: 40%;
+  height: auto;
+}
+/* instrucciones y niveles */
+.instrucciones-juego,
+.niveles-dificultad {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(22, 39, 58, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.reglas,
+.niveles {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.reglas {
+  width: 600px;
+  height: 700px;
+}
+.contenedor-reglas {
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  overflow-y: scroll;
+}
+.tarjeta {
+  width: 100%;
+  background-color: var(--blanco-claro);
+  padding: 20px;
+  color: var(--negro);
+  margin-bottom: 50px;
+}
+.tarjeta p strong {
+  color: var(--amarillo);
+}
+.contenedor-reglas .tarjeta:last-child {
+  margin-bottom: 0;
+}
+.tarjeta h3 {
+  font-family: titulo-juego, sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 4px;
+  color: var(--fondo-menu-medio)
+}
+.tarjeta ul {
+  text-align: left;
+}
+.tarjeta img {
+  display: block;
+  margin: 30px auto;
+  max-width: 65%;
+}
+.tarjeta:nth-child(3) img {
+  max-width: 80%;
+}
+/* niveles dificultad */
+.reglas,
+.contenedor-reglas,
+.niveles,
+.contenedor-niveles,
+.fondo,
+.tarjeta,
+.tarjeta img {
+  border-radius: 5px;
+}
+.niveles {
+  width: 400px;
+  height: 500px;
+  background-image: url(../img/nivel.gif);
+}
+.contenedor-niveles,
+.contenedor-reglas {
+  padding: 60px;
+  width: 100%;
+  height: 100%;
+}
+.contenedor-niveles {
+  background-color: rgba(48, 88, 136, 0.3);
+  backdrop-filter: blur(6px);
+}
+.niveles .boton {
+  flex: 55%;
+}
+.facil {
+  background-color: var(--verde);
+}
+.medio {
+  background-color: var(--naranja);
+}
+.avanzado {
+  background-color: var(--magenta);
+}
+.niveles .boton:hover {
+  background-color: var(--blanco-claro);
+}
+.facil:hover {
+  box-shadow: 3px 3px var(--verde-medio);
+  color: var(--verde-medio);
+}
+.medio:hover {
+  box-shadow: 3px 3px var(--naranja-medio);
+  color: var(--naranja-medio);
+}
+.avanzado:hover {
+  box-shadow: 3px 3px var(--magenta-medio);
+  color: var(--magenta-medio);
+}
+/* boton cerrar menu */
+.cerrar {
+  position: absolute;
+  width: 30px;
+  height: auto;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
+}
+/* graficos svg con animaciones */
+svg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(85, 132, 189, 0.2);
+  backdrop-filter: blur(5px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+}
+/* punteo e intentos */
+.puntos,
+.intentos {
+  position: absolute;
+  top: 50px;
+  background-color: var(--fondo-menu-medio);
+  color: var(--blanco-claro);
+  padding: 15px 0 15px 15px;
+  display: none;
+}
+.puntos {
+  left: 0;
+}
+.puntos,
+#punteo {
+  border-radius: 0 5px 5px 0;
+}
+.puntos,
+#punteo,
+.intentos,
+#intento {
+  font-size: 1.2rem;
+  font-family: fuente-juego, sans-serif;
+}
+#punteo,
+#intento {
+  background-color: var(--blanco-claro);
+  color: var(--fondo-menu-medio);
+  margin-left: 1rem;
+  padding: 15px 25px;
+}
+.intentos {
+  right: 0;
+  border-radius: 5px 0 0 5px;
+}
+/* puntaje final */
+.score {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(75,99,255);
+  background: linear-gradient(145deg, rgba(89, 75, 126,0.5) 0%, rgba(255,73,130,0.5) 37%, rgba(162,68,128,0.5) 69%, rgba(255,134,134,0.5) 100%);
+  backdrop-filter: blur(5px);
+  align-items: center;
+  justify-content: center;
+  font-family: fuente-juego, sans-serif;
+  display: none;
+}
+.final {
+  border-radius: 7px;
+  background-image: url('../img/fin.gif');
+  background-position: center;
+  background-size: cover;
+  width: 600px;
+  height: 700px;
+}
+.final h2 {
+  font-size: 4rem;
+  text-shadow: 5px 5px var(--negro);
+  text-align: center;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.final p {
+  text-shadow: 2px 2px var(--negro);
+  font-size: 1.5rem;
+}
+#final {
+  font-size: 4rem;
+  margin: 0;
+}
+.reiniciar {
+  background-color: #ff4982;
+  display: block;
+  margin: 70px auto 0;
+}
+.reiniciar:hover {
+  color: #ff4982;
+  box-shadow: 3px 3px;
+}
